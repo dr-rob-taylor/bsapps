@@ -116,6 +116,38 @@ run_demo <- function()
       ),
 
       bslib::nav_panel(
+        title = "Sidebar",
+        bslib::page_sidebar(
+
+          includeCSS(list.files(pattern = "sidebars.css", recursive = T)),
+
+          sidebar = collapsible_item_sidebar(
+            id = "sidebar",
+            item_list = htmltools::tagList(
+              collapsible_items(
+                header = "Home",
+                show = TRUE,
+                sidebar_item(label = "Overview"),
+                sidebar_item(label = "Updates"),
+                sidebar_item(label = "Reports"),
+              ),
+              collapsible_items(
+                header = "Dashboard",
+                show = FALSE,
+                sidebar_item(label = "Overview"),
+                sidebar_item(label = "Weekly"),
+                sidebar_item(label = "Monthly"),
+              )
+            )
+          ),
+
+          htmltools::tags$div(
+            htmltools::h4("Sidebar"),
+          )
+        )
+      ),
+
+      bslib::nav_panel(
         title = "Buttons",
         bslib::page_fluid(
           htmltools::h4("Dropdown buttons"),
