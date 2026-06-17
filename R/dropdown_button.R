@@ -1,22 +1,35 @@
 
-#' Dropdown button
+#' Create a Bootstrap dropdown button
 #'
-#' @param ...
-#' @param id
-#' @param label
-#' @param class
-#' @param split
-#' @param outline
-#' @param dark
-#' @param size
-#' @param type
-#' @param direction
+#' Creates a Bootstrap dropdown button with a menu of items. Supports all
+#' Bootstrap contextual colours, outline variants, split buttons, dark menus,
+#' and directional drop positioning.
 #'
-#' @returns
+#' @param ... [dropdown_item()], [dropdown_header()], and [dropdown_divider()]
+#'   elements to include in the dropdown menu.
+#' @param id A unique HTML id for the dropdown container element.
+#' @param label The text label for the dropdown toggle button.
+#' @param class Additional CSS classes to apply to the container element.
+#' @param split If `TRUE`, renders a split button where the label and the
+#'   dropdown arrow are separate clickable elements.
+#' @param outline If `TRUE`, renders an outline variant of the button style.
+#' @param dark If `TRUE`, renders the dropdown menu with a dark background.
+#' @param size The size of the button. One of `"m"` (default), `"s"` (small),
+#'   or `"l"` (large).
+#' @param type The Bootstrap contextual colour of the button. One of
+#'   `"primary"`, `"secondary"`, `"success"`, `"info"`, `"warning"`, or
+#'   `"danger"`.
+#' @param direction The direction the menu opens relative to the button. One of
+#'   `"down"` (default), `"up"`, `"left"`, or `"right"`.
+#'
+#' @returns An HTML tag that can be added to a UI definition.
+#'
+#' @seealso [dropdown_item()], [dropdown_header()], [dropdown_divider()]
+#'
 #' @export
 #'
 #' @examples
-#'
+#' # No run
 dropdown_button <- function(..., id, label = NULL, class = NULL, split = FALSE,
                             outline = FALSE,  dark = FALSE,
                             size = c("m", "s", "l"),
@@ -71,6 +84,26 @@ dropdown_button <- function(..., id, label = NULL, class = NULL, split = FALSE,
   )
 }
 
+#' Create a Bootstrap dropdown menu item
+#'
+#' Creates a single clickable item for use inside [dropdown_button()].
+#'
+#' @param input_id Currently unused. Reserved for future Shiny input integration.
+#' @param label The text label for the menu item.
+#' @param href An optional URL the item links to. Defaults to `"#"`.
+#' @param disabled If `TRUE`, the item is rendered in a disabled, non-clickable
+#'   state.
+#' @param active If `TRUE`, the item is highlighted as the currently active
+#'   selection.
+#'
+#' @returns An HTML list item tag for use inside [dropdown_button()].
+#'
+#' @seealso [dropdown_button()], [dropdown_header()], [dropdown_divider()]
+#'
+#' @export
+#'
+#' @examples
+#' # No run
 dropdown_item <- function(input_id, label = NULL, href = NULL, disabled = FALSE, active = FALSE){
 
   if(is.null(href)) href = "#"
@@ -84,12 +117,40 @@ dropdown_item <- function(input_id, label = NULL, href = NULL, disabled = FALSE,
   )
 }
 
+#' Create a Bootstrap dropdown menu header
+#'
+#' Creates a non-interactive header label to group related items inside a
+#' [dropdown_button()] menu.
+#'
+#' @param label The text to display as the group header.
+#'
+#' @returns An HTML list item tag for use inside [dropdown_button()].
+#'
+#' @seealso [dropdown_button()], [dropdown_item()], [dropdown_divider()]
+#'
+#' @export
+#'
+#' @examples
+#' # No run
 dropdown_header <- function(label){
   htmltools::tags$li(
     htmltools::h6( class = "dropdown-header", label)
   )
 }
 
+#' Create a Bootstrap dropdown menu divider
+#'
+#' Creates a horizontal rule to visually separate groups of items inside a
+#' [dropdown_button()] menu.
+#'
+#' @returns An HTML list item tag for use inside [dropdown_button()].
+#'
+#' @seealso [dropdown_button()], [dropdown_item()], [dropdown_header()]
+#'
+#' @export
+#'
+#' @examples
+#' # No run
 dropdown_divider <- function(){
   htmltools::tags$li(
     htmltools::tags$hr(
@@ -97,4 +158,3 @@ dropdown_divider <- function(){
     )
   )
 }
-

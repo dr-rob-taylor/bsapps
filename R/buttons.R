@@ -1,4 +1,30 @@
 
+#' Create a Bootstrap button
+#'
+#' Creates a styled Bootstrap button. This is the core button constructor used
+#' by [toggle_button()] and [action_button()].
+#'
+#' @param id An optional HTML id for the button element.
+#' @param label The text label for the button.
+#' @param class Additional CSS classes to apply to the button element.
+#' @param icon Currently unused. Reserved for future icon support.
+#' @param type The Bootstrap contextual colour of the button. One of
+#'   `"primary"`, `"secondary"`, `"success"`, `"info"`, `"warning"`, or
+#'   `"danger"`.
+#' @param outline If `TRUE`, renders an outline variant of the button style.
+#' @param size The size of the button. One of `"md"` (default), `"sm"`
+#'   (small), or `"lg"` (large).
+#' @param disabled If `TRUE`, the button is rendered in a disabled state and
+#'   cannot be clicked.
+#'
+#' @returns An HTML button tag that can be added to a UI definition.
+#'
+#' @seealso [toggle_button()], [action_button()]
+#'
+#' @export
+#'
+#' @examples
+#' # No run
 bs_button <- function(id = NULL, label = NULL, class = NULL, icon = NULL,
                       type = c("primary", "secondary", "success", "info",
                                "warning", "danger"), outline = FALSE,
@@ -42,11 +68,40 @@ bs_button <- function(id = NULL, label = NULL, class = NULL, icon = NULL,
 
 }
 
+#' Create a Bootstrap toggle button
+#'
+#' Creates a Bootstrap button that toggles an offcanvas panel, a collapsible
+#' element, or a modal dialog. Inherits all styling arguments from [bs_button()].
+#'
+#' @param target_id The HTML id of the element to toggle.
+#' @param toggle_type The Bootstrap component to toggle. One of `"offcanvas"`,
+#'   `"collapse"`, or `"modal"`.
+#' @param id An optional HTML id for the button element.
+#' @param label The text label for the button.
+#' @param class Additional CSS classes to apply to the button element.
+#' @param icon Currently unused. Reserved for future icon support.
+#' @param type The Bootstrap contextual colour of the button. One of
+#'   `"primary"`, `"secondary"`, `"success"`, `"info"`, `"warning"`, or
+#'   `"danger"`.
+#' @param outline If `TRUE`, renders an outline variant of the button style.
+#' @param size The size of the button. One of `"md"` (default), `"sm"`
+#'   (small), or `"lg"` (large).
+#' @param disabled If `TRUE`, the button is rendered in a disabled state and
+#'   cannot be clicked.
+#' @param ... Currently unused.
+#'
+#' @returns An HTML button tag that can be added to a UI definition.
+#'
+#' @seealso [bs_button()], [offcanvas_dialog()], [modal_dialog()]
+#'
+#' @export
+#'
+#' @examples
+#' # No run
 toggle_button <- function(target_id,
                           toggle_type = c("offcanvas", "collapse", "modal"),
                           ... ){
 
-  #tag_button  <- do.call("bs_button", list(...))
   toggle_type <- rlang::arg_match(toggle_type)
   target_ref  <- paste0("#", target_id)
 
@@ -75,6 +130,35 @@ formals(toggle_button) <- c(
 )
 
 
+#' Create a Bootstrap action button
+#'
+#' Creates a Bootstrap-styled button that integrates with Shiny's reactivity
+#' system. Equivalent to [shiny::actionButton()] but uses [bs_button()] for
+#' styling, giving access to all Bootstrap button variants, sizes, and the
+#' outline style.
+#'
+#' @param id An optional HTML id for the button element.
+#' @param label The text label for the button.
+#' @param class Additional CSS classes to apply to the button element.
+#' @param icon Currently unused. Reserved for future icon support.
+#' @param type The Bootstrap contextual colour of the button. One of
+#'   `"primary"`, `"secondary"`, `"success"`, `"info"`, `"warning"`, or
+#'   `"danger"`.
+#' @param outline If `TRUE`, renders an outline variant of the button style.
+#' @param size The size of the button. One of `"md"` (default), `"sm"`
+#'   (small), or `"lg"` (large).
+#' @param disabled If `TRUE`, the button is rendered in a disabled state and
+#'   cannot be clicked.
+#' @param ... Currently unused.
+#'
+#' @returns An HTML button tag that can be added to a UI definition.
+#'
+#' @seealso [bs_button()], [shiny::actionButton()]
+#'
+#' @export
+#'
+#' @examples
+#' # No run
 action_button <- function(...){
 
   btn_args   <- as.list(match.call(expand.dots = TRUE))[-1]
@@ -93,4 +177,3 @@ formals(action_button) <- c(
   formals(bs_button),
   list(... = quote(expr=))
 )
-
