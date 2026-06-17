@@ -2,7 +2,7 @@
 % Please edit documentation in R/dropdown_button.R
 \name{dropdown_button}
 \alias{dropdown_button}
-\title{Dropdown button}
+\title{Create a Bootstrap dropdown button}
 \usage{
 dropdown_button(
   ...,
@@ -17,6 +17,44 @@ dropdown_button(
   direction = c("down", "up", "left", "right")
 )
 }
+\arguments{
+\item{...}{[dropdown_item()], [dropdown_header()], and [dropdown_divider()]
+elements to include in the dropdown menu.}
+
+\item{id}{A unique HTML id for the dropdown container element.}
+
+\item{label}{The text label for the dropdown toggle button.}
+
+\item{class}{Additional CSS classes to apply to the container element.}
+
+\item{split}{If `TRUE`, renders a split button where the label and the
+dropdown arrow are separate clickable elements.}
+
+\item{outline}{If `TRUE`, renders an outline variant of the button style.}
+
+\item{dark}{If `TRUE`, renders the dropdown menu with a dark background.}
+
+\item{size}{The size of the button. One of `"m"` (default), `"s"` (small),
+or `"l"` (large).}
+
+\item{type}{The Bootstrap contextual colour of the button. One of
+`"primary"`, `"secondary"`, `"success"`, `"info"`, `"warning"`, or
+`"danger"`.}
+
+\item{direction}{The direction the menu opens relative to the button. One of
+`"down"` (default), `"up"`, `"left"`, or `"right"`.}
+}
+\value{
+An HTML tag that can be added to a UI definition.
+}
 \description{
-Dropdown button
+Creates a Bootstrap dropdown button with a menu of items. Supports all
+Bootstrap contextual colours, outline variants, split buttons, dark menus,
+and directional drop positioning.
+}
+\examples{
+# No run
+}
+\seealso{
+[dropdown_item()], [dropdown_header()], [dropdown_divider()]
 }

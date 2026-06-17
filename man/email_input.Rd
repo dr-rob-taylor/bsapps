@@ -2,7 +2,7 @@
 % Please edit documentation in R/email_input.R
 \name{email_input}
 \alias{email_input}
-\title{Create a email input control}
+\title{Create an email input control}
 \usage{
 email_input(
   id,
@@ -20,32 +20,43 @@ email_input(
 \arguments{
 \item{id}{The input slot that will be used to access the value.}
 
-\item{label}{Display label for the control, or \code{NULL} for no label.}
+\item{label}{Display label for the control, or `NULL` for no label.}
 
-\item{value}{Initial value.}
+\item{value}{Initial value of the input field.}
 
-\item{floating}{If true, the label is floated over the input field.}
+\item{floating}{If `TRUE`, the label floats over the input field when it has
+focus or a value (Bootstrap floating label style).}
 
-\item{placeholder}{A character string giving the user a hint as to what can
-be entered into the control. Internet Explorer 8 and 9 do not support this
-option.}
+\item{placeholder}{Placeholder text shown when the field is empty. When
+`floating = TRUE` and no placeholder is supplied, defaults to
+`"Enter email"`.}
 
-\item{size}{Controls the size of the input field.}
+\item{size}{Controls the size of the input field. One of `"m"` (default),
+`"s"` (small), or `"l"` (large).}
 
-\item{disabled}{If true, the input field is shaded out and cannot be modified.}
+\item{disabled}{If `TRUE`, the input is shaded out and cannot be modified.}
 
-\item{class}{Additional Bootstrap utilities to manipulate the input control.}
+\item{class}{Additional CSS classes to apply to the input element, e.g.
+Bootstrap utility classes such as `"text-warning"`.}
 
-\item{readonly}{If true, the input field cannot be modified but appears active.}
+\item{readonly}{If `TRUE`, the input cannot be modified but is not greyed
+out and its value is still submitted.}
 
-\item{update_on}{something....}
+\item{update_on}{Controls when the input value is sent to the Shiny server.
+`"change"` sends on every keystroke; `"blur"` sends only when the field
+loses focus.}
 }
 \value{
 An email input control that can be added to a UI definition.
 }
 \description{
-Create an input control for entry of unstructured text values for email
+Creates an input control for entry of email addresses. Supports Bootstrap
+sizing, floating labels, disabled and read-only states, and control over
+when the value is sent to the Shiny server.
 }
 \examples{
 # No run
+}
+\seealso{
+[shiny::textInput()]
 }

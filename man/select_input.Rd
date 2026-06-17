@@ -2,7 +2,7 @@
 % Please edit documentation in R/select_input.R
 \name{select_input}
 \alias{select_input}
-\title{Create a select list form control}
+\title{Create a select list input control}
 \usage{
 select_input(
   id,
@@ -19,44 +19,35 @@ select_input(
 \arguments{
 \item{id}{The input slot that will be used to access the value.}
 
-\item{label}{Display label for the control, or \code{NULL} for no label.}
+\item{label}{Display label for the control.}
 
 \item{choices}{List of values to select from. If elements of the list are
-named, then that name --- rather than the value --- is displayed to the
-user. It's also possible to group related inputs by providing a named list
-whose elements are (either named or unnamed) lists, vectors, or factors. In
-this case, the outermost names will be used as the group labels (leveraging
-the \verb{<optgroup>} HTML tag) for the elements in the respective sublist. See
-the example section for a small demo of this feature.}
+named, those names are used as the displayed labels.}
 
-\item{selected}{The initially selected value (or multiple values if \code{multiple = TRUE}). If not specified then defaults to the first value for
-single-select lists and no values for multiple select lists.}
+\item{selected}{The initially selected value. If `NULL`, defaults to the
+first element of `choices` (or no selection for `multiple = TRUE`).}
 
-\item{multiple}{Is selection of multiple items allowed?}
+\item{multiple}{If `TRUE`, multiple items can be selected at once.}
 
-\item{selectize}{Whether to use \pkg{selectize.js} or not.}
+\item{selectize}{If `TRUE`, the select widget is enhanced using the
+selectize.js library.}
 
-\item{width}{The width of the input, e.g. \code{'400px'}, or \code{'100\%'};
-see \code{\link[shiny:validateCssUnit]{validateCssUnit()}}.}
+\item{width}{The width of the input, e.g. `"200px"` or `"50%"`.}
 
-\item{size}{Number of items to show in the selection box; a larger number
-will result in a taller box. Not compatible with \code{selectize=TRUE}.
-Normally, when \code{multiple=FALSE}, a select input will be a drop-down list,
-but when \code{size} is set, it will be a box instead.}
+\item{size}{Number of items to show in the list box when `selectize = FALSE`.}
 
-\item{disable}{Boolean toggle to disable/enable the input.}
+\item{disable}{If `TRUE`, the input is shaded out and cannot be modified.}
 }
 \value{
 A select list control that can be added to a UI definition.
 }
 \description{
-A wrapper around `inputSelect` that creates a select list to choose a
-single or multiple items from a list of values. Includes an option to
-`disable` the input.
+A wrapper around [shiny::selectInput()] that creates a select list to choose
+a single or multiple items from a list of values, with an added `disable`
+option not available in the base function.
 }
 \examples{
-# Do not run
-
+# No run
 }
 \seealso{
 [shiny::selectInput()]
