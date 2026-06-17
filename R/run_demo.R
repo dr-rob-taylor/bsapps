@@ -52,7 +52,7 @@ run_demo <- function()
             toggle_button( id = "toggle", toggle_type = "offcanvas",
                            label = "Toggle offcanvas",
                            target_id = "my_canvas"),
-            offcanvas_diaglog( id = "my_canvas",
+            offcanvas_dialog( id = "my_canvas",
                                position = "left", body_scroll = TRUE, backdrop = TRUE,
                                header = offcanvas_header( title = "My Offcanvas"),
                                body = offcanvas_body(

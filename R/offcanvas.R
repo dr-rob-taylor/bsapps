@@ -1,5 +1,5 @@
 
-offcanvas_diaglog <- function(..., id, header = NULL, body = NULL, footer = NULL,
+offcanvas_dialog <- function(..., id, header = NULL, body = NULL, footer = NULL,
                               position = c("left", "right", "top", "bottom"),
                               body_scroll = FALSE, backdrop = TRUE
 )
